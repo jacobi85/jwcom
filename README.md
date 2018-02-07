@@ -2016,7 +2016,7 @@ By default, Create React App produces a build assuming your app is hosted at the
 To override this, specify the `homepage` in your `package.json`, for example:
 
 ```js
-  "homepage": "http://mywebsite.com/relativepath",
+  "homepage": "https://jwcom.herokuapp.com/",
 ```
 
 This will let Create React App correctly infer the root path to use in the generated HTML file.

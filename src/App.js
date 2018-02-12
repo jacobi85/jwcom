@@ -4,20 +4,55 @@ import './App.css';
 import profileImg from './placeholder-profile.jpg';
 import logo from './jacobwestman_logo@x2.gif';
 import Fade from 'react-reveal/Fade';
+import Responsive from 'react-responsive';
+
+import supImageHW from './assets/sceens/sup/sup-heavy-water-tn.jpg';
+import supImageRS from './assets/sceens/sup/sup-racing-sweden-tn.jpg';
+
+/** Responsive tools */
+/* const Desktop = props => <Responsive {...props} minWidth={992} />;
+const Tablet = props => <Responsive {...props} minWidth={768} maxWidth={991} />; */
+const Mobile = props => <Responsive {...props} maxWidth={767} />;
+const Default = props => <Responsive {...props} minWidth={768} />;
 
 function Leftside(props) {
   return <p>Markup that will be revealed on scroll</p>;
 }
 
 function Maincontent(props) {
+  const gridInstance = (
+    <div className="App-maincontent">
+      <Row className="show-grid">
+        <Col md={6}>
+          <img src={supImageRS} alt="Stand up paddle - racing in Sweden" />
+        </Col>
+        <Col md={6}>
+          <Leftside />
+        </Col>
+      </Row>
+      <Row className="show-grid">
+        <Col md={6}>
+          <Leftside />
+        </Col>
+        <Col md={6}>
+          <img src={supImageHW} alt="Stand up paddle - heavy water" />
+        </Col>
+      </Row>
+    </div>
+  );
+
   return (
     <Grid>
       <Row className="show-grid">
         <Col md={12}>
-          <Fade when={props.isVisible} collapse>
-            <div>
-              <Leftside />
-            </div>
+          <Fade
+            when={props.isVisible}
+            duration={1000}
+            distance="20px"
+            collapse
+            top
+          >
+            {gridInstance}
           </Fade>
         </Col>
       </Row>
@@ -26,9 +61,8 @@ function Maincontent(props) {
 }
 
 function Card(props) {
-  const componentStyles = `card text-white ${props.bg} mb-3 grow`;
-  return (
-    <div className={componentStyles}>
+  const cardcontainer = (
+    <React.Fragment>
       <div className="card-header">Header</div>
       <div className="card-body">
         <h4 className="card-title">Secondary card title</h4>
@@ -44,13 +78,27 @@ function Card(props) {
           View more
         </button>
       </div>
-    </div>
+    </React.Fragment>
+  );
+
+  let componentStyles = `card text-white ${props.bg} mb-3`;
+  const componentStylesDefault = componentStyles + ' grow';
+
+  return (
+    <React.Fragment>
+      <Mobile>
+        <div className={componentStyles}>{cardcontainer}</div>
+      </Mobile>
+      <Default>
+        <div className={componentStylesDefault}>{cardcontainer}</div>
+      </Default>
+    </React.Fragment>
   );
 }
 
 function Cards(props) {
   return (
-    <Grid>
+    <Grid className="App-cards">
       <Row className="show-grid">
         <Col md={4}>
           <Card bg="bg-primary" handleOnClickCard={props.handleOnClick} />

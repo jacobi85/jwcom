@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col, Jumbotron, Button } from 'react-bootstrap';
 import './App.css';
 import profileImg from './placeholder-profile.jpg';
 import logo from './jacobwestman_logo@x2.gif';
@@ -15,27 +15,54 @@ const Tablet = props => <Responsive {...props} minWidth={768} maxWidth={991} />;
 const Mobile = props => <Responsive {...props} maxWidth={767} />;
 const Default = props => <Responsive {...props} minWidth={768} />;
 
-function Leftside(props) {
-  return <p>Markup that will be revealed on scroll</p>;
+function Colrightside(props) {
+  const jumbotron = (
+    <Jumbotron>
+      <h2>Hello, world!</h2>
+      <p>
+        This is a simple hero unit, a simple jumbotron-style component for
+        calling extra attention to featured content or information.
+      </p>
+      <p>
+        <Button bsStyle="primary">Visit website</Button>
+      </p>
+    </Jumbotron>
+  );
+
+  return <React.Fragment>{jumbotron}</React.Fragment>;
+}
+
+function Colleftside(props) {
+  return (
+    <div>
+      <p>Markup that will be revealed on scroll</p>
+      <br />
+      <p>Markup that will be revealed on scroll</p>
+    </div>
+  );
 }
 
 function Maincontent(props) {
   const gridInstance = (
     <div className="App-maincontent">
       <Row className="show-grid">
-        <Col md={6}>
-          <img src={supImageRS} alt="Stand up paddle - racing in Sweden" />
+        <Col md={6} className="App-maincontent__col App-maincontent__col-1">
+          <figure>
+            <img src={supImageRS} alt="Stand up paddle - racing in Sweden" />
+          </figure>
         </Col>
-        <Col md={6}>
-          <Leftside />
+        <Col md={6} className="App-maincontent__col App-maincontent__col-2">
+          <Colrightside />
         </Col>
       </Row>
       <Row className="show-grid">
-        <Col md={6}>
-          <Leftside />
+        <Col md={6} className="App-maincontent__col App-maincontent__col-3">
+          <Colleftside />
         </Col>
-        <Col md={6}>
-          <img src={supImageHW} alt="Stand up paddle - heavy water" />
+        <Col md={6} className="App-maincontent__col App-maincontent__col-4">
+          <figure>
+            <img src={supImageHW} alt="Stand up paddle - heavy water" />
+          </figure>
         </Col>
       </Row>
     </div>
@@ -70,13 +97,9 @@ function Card(props) {
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
         </p>
-        <button
-          onClick={props.handleOnClickCard}
-          type="button"
-          className="btn btn-info btn-lg"
-        >
-          View more
-        </button>
+        <Button bsStyle="info" bsSize="large" onClick={props.handleOnClickCard}>
+          Learn more
+        </Button>
       </div>
     </React.Fragment>
   );
@@ -144,6 +167,7 @@ class App extends Component {
         </header>
         <Cards handleOnClick={this.handleOnClick} />
         <Maincontent isVisible={this.state.content.isVisible} />
+        <footer className="App-footer" />
       </div>
     );
   }

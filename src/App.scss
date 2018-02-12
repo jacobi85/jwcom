@@ -1,38 +1,90 @@
 @import "styles/_colors.scss";
+@import "styles/sass-css-utilities/sass-css-utilities.scss";
 
 .App {
+  &-header {
+    height: 361px;
+    margin-bottom: $spacing-margin-default;
+    background-color: $color-white;
+    text-align: center;
+    position: relative;
+
+    > img {
+      max-width: 187px;
+    }
+
+    &__profile-img {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+  &-title {
+  }
+
+  &-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
 
   &-cards {
     margin-bottom: $spacing-margin-default;
+
+    .card {
+      @include border-radius(2px);
+    }
   }
 
   &-maincontent {
-    
+    &__col {
+      &-1 {
+        @include at-least-width($scu-tablet-min-width) {
+          > figure {
+            position: relative;
+            height: 250px;
+            img {
+              position: absolute;
+              z-index: 1;
+              width: 115%;
+              @include border-radius(2px);
+              @include box-shadow(0 0 10px 0 $color-gray);
+            }
+          }
+        }
+      }
+
+      &-2 {
+        @include at-least-width($scu-tablet-min-width) {
+          padding-left: 10%;
+        }
+      }
+
+      &-3 {
+        @include at-least-width($scu-tablet-min-width) {
+          padding-top: 10em;
+        }
+      }
+    }
+  }
+
+  &-footer {
+    height: 10em;
   }
 }
 
-.App-header {
-  height: 361px;
-  margin-bottom: $spacing-margin-default;
-  background-color: $color-white;
-  text-align: center;
-  position: relative;
+.jumbotron {
+  p {font-size: inherit}
 
-  &__profile-img {
-    position: absolute;
-    bottom: 0;
+  h2 {
+    font-weight: bold;
+    color: $color-green;
   }
 }
 
-.App-logo {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-}
+.btn {font-size: inherit}
 
-.App-title {
-}
-
+/* Transitions & Animations */
 .grow {
   transition: all 0.2s ease-in-out;
 }

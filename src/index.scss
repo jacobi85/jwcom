@@ -1,8 +1,13 @@
-@import 'styles/_colors.scss';
+@import "styles/_colors.scss";
 
 body {
   margin: 0;
   padding: 0;
-  font-size:16px;
+  font-size: 16px;
   background: $color-lightgray;
+}
+
+img {
+  width: 100%;
+  height: auto;
 }

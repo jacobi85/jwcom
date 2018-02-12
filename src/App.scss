@@ -1,32 +1,33 @@
-@import 'styles/_colors.scss';
+@import "styles/_colors.scss";
 
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
 }
 
 .App-header {
-  height: 200px;
-  color: $color-white;
+  height: 361px;
+  margin-bottom: 2em;
+  background-color: $color-white;
+  text-align: center;
+  position: relative;
+
+  &__profile-img {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+.App-logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
 }
 
 .App-title {
-  font-size: 1.5em;
 }
 
-.App-intro {
-  font-size: large;
+.grow {
+  transition: all 0.2s ease-in-out;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.grow:hover {
+  transform: scale(1.1);
 }

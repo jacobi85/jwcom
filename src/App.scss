@@ -33,6 +33,14 @@
 
     .card {
       @include border-radius(2px);
+      min-height: 200px;
+    
+      &-body {
+        cursor: pointer;
+      }
+      h1 {
+        font-weight: bold;
+      }
     }
   }
 
@@ -74,7 +82,9 @@
 }
 
 .jumbotron {
-  p {font-size: inherit}
+  p {
+    font-size: inherit;
+  }
 
   h2 {
     font-weight: bold;
@@ -82,7 +92,9 @@
   }
 }
 
-.btn {font-size: inherit}
+.btn {
+  font-size: inherit;
+}
 
 /* Transitions & Animations */
 .grow {

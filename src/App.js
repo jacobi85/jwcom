@@ -35,7 +35,7 @@ function Colrightside(props) {
 function Colleftside(props) {
   return (
     <div>
-      <p>Markup that will be revealed on scroll</p>
+      <p>Markup that will be revealed on scroll </p>
       <br />
       <p>Markup that will be revealed on scroll</p>
     </div>
@@ -52,6 +52,7 @@ function Maincontent(props) {
           </figure>
         </Col>
         <Col md={6} className="App-maincontent__col App-maincontent__col-2">
+          <h1>{props.activeContentId}</h1>
           <Colrightside />
         </Col>
       </Row>
@@ -88,18 +89,12 @@ function Maincontent(props) {
 }
 
 function Card(props) {
+  const { id, title, description } = props.data;
   const cardcontainer = (
     <React.Fragment>
-      <div className="card-header">Header</div>
-      <div className="card-body">
-        <h4 className="card-title">Secondary card title</h4>
-        <p className="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <Button bsStyle="info" bsSize="large" onClick={props.handleOnClickCard}>
-          Learn more
-        </Button>
+      <div className="card-body" onClick={() => props.handleOnClickCard(id)}>
+        <h1 className="card-title">{title}</h1>
+        <p className="card-text">{description}</p>
       </div>
     </React.Fragment>
   );
@@ -123,15 +118,18 @@ function Cards(props) {
   return (
     <Grid className="App-cards">
       <Row className="show-grid">
-        <Col md={4}>
-          <Card bg="bg-primary" handleOnClickCard={props.handleOnClick} />
-        </Col>
-        <Col md={4}>
-          <Card bg="bg-success" handleOnClickCard={props.handleOnClick} />
-        </Col>
-        <Col md={4}>
-          <Card bg="bg-info" handleOnClickCard={props.handleOnClick} />
-        </Col>
+        {props.data.map(card => {
+          return (
+            <Col md={4}>
+              <Card
+                key={card.id}
+                data={card}
+                bg={card.colorClass}
+                handleOnClickCard={props.handleOnClick}
+              />
+            </Col>
+          );
+        })}
       </Row>
     </Grid>
   );
@@ -142,17 +140,24 @@ class App extends Component {
     super(props);
 
     this.state = {
-      content: { isVisible: false }
+      content: [],
+      isContentVisible: false,
+      activeContentId: 0
     };
 
     this.handleOnClick = this.handleOnClick.bind(this);
   }
 
-  handleOnClick(el) {
-    this.setState({ content: { isVisible: true } });
+  componentDidMount() {
+    this.setState({ content: this.props.data });
+  }
+
+  handleOnClick(id) {
+    this.setState({ isContentVisible: true, activeContentId: id });
   }
 
   render() {
+    const { content, isContentVisible, activeContentId } = this.state;
     return (
       <div className="App">
         <header className="App-header">
@@ -165,8 +170,11 @@ class App extends Component {
             alt="profile-placeholder"
           />
         </header>
-        <Cards handleOnClick={this.handleOnClick} />
-        <Maincontent isVisible={this.state.content.isVisible} />
+        <Cards data={content} handleOnClick={this.handleOnClick} />
+        <Maincontent
+          isVisible={isContentVisible}
+          activeContentId={activeContentId}
+        />
         <footer className="App-footer" />
       </div>
     );

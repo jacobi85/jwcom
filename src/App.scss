@@ -1,4 +1,5 @@
 @import "styles/_colors.scss";
+@import "styles/_vendor-prefixes.scss";
 @import "styles/sass-css-utilities/sass-css-utilities.scss";
 
 .App {
@@ -34,7 +35,25 @@
     .card {
       @include border-radius(2px);
       min-height: 200px;
-    
+
+      &.primary {
+        background-color: $color-blue;
+
+        &.active {
+          background-color: $color-lightblue;
+          border: 2px solid $color-white;
+          @include transition(background-color 500ms linear);
+        }
+      }
+
+      &.secondary {
+        background-color: $color-purple;
+      }
+
+      &.tertiary {
+        background-color: $color-green;
+      }
+
       &-body {
         cursor: pointer;
       }
@@ -45,7 +64,42 @@
   }
 
   &-maincontent {
+    &.primary {
+      h2 {
+        color: $color-blue;
+      }
+    }
+
+    &.secondary {
+      h2 {
+        color: $color-purple;
+      }
+    }
+
+    &.tertiary {
+      h2 {
+        color: $color-green;
+      }
+    }
+
     &__col {
+      &__collapsible-area {
+        text-align: center;
+        .btn {
+          &.btn-link {
+            text-decoration: blink;
+            padding: 0;
+            .glyphicon {
+              top: 2px;
+            }
+          }
+        }
+
+        p {
+          text-align: left;
+        }
+      }
+
       &-1 {
         @include at-least-width($scu-tablet-min-width) {
           > figure {
@@ -56,7 +110,7 @@
               z-index: 1;
               width: 115%;
               @include border-radius(2px);
-              @include box-shadow(0 0 10px 0 $color-gray);
+              @include box-shadow(0 0 10px 0 $color-black);
             }
           }
         }
@@ -64,13 +118,22 @@
 
       &-2 {
         @include at-least-width($scu-tablet-min-width) {
-          padding-left: 10%;
+          padding-top: $spacing-margin-default;
         }
       }
 
       &-3 {
         @include at-least-width($scu-tablet-min-width) {
           padding-top: 10em;
+        }
+      }
+
+      &-4 {
+        > figure {
+          img {
+            @include border-radius(2px);
+            @include box-shadow(0 0 10px 0 $color-black);
+          }
         }
       }
     }
@@ -80,15 +143,19 @@
     height: 10em;
   }
 }
+.container {
+  .jumbotron {
+    padding-left: 70px;
+    @include border-radius(2px);
+    @include box-shadow(0 0 10px 0 $color-black);
 
-.jumbotron {
-  p {
-    font-size: inherit;
-  }
+    p {
+      font-size: inherit;
+    }
 
-  h2 {
-    font-weight: bold;
-    color: $color-green;
+    h2 {
+      font-weight: bold;
+    }
   }
 }
 

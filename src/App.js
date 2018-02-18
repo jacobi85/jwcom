@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, Jumbotron, Button } from 'react-bootstrap';
+import { Grid, Row, Col, Jumbotron, Button, Collapse } from 'react-bootstrap';
 import './App.css';
 import profileImg from './placeholder-profile.jpg';
 import logo from './jacobwestman_logo@x2.gif';
@@ -8,6 +8,10 @@ import Responsive from 'react-responsive';
 
 import supImageHW from './assets/sceens/sup/sup-heavy-water-tn.jpg';
 import supImageRS from './assets/sceens/sup/sup-racing-sweden-tn.jpg';
+/* import supImageHW from './assets/sceens/entrepreneur/entrepreneur-play-network.jpeg';
+import supImageRS from './assets/sceens/entrepreneur/people-coffee-tea-meeting.jpg'; */
+/* import supImageHW from './assets/sceens/programming/programming-desk.jpeg';
+import supImageRS from './assets/sceens/programming/programming-computer-screen-tn.jpg'; */
 
 /** Responsive tools */
 /* const Desktop = props => <Responsive {...props} minWidth={992} />;
@@ -15,17 +19,38 @@ const Tablet = props => <Responsive {...props} minWidth={768} maxWidth={991} />;
 const Mobile = props => <Responsive {...props} maxWidth={767} />;
 const Default = props => <Responsive {...props} minWidth={768} />;
 
-function Colrightside(props) {
+function Colrightside({
+  data,
+  handleToggleContentClick,
+  isTogglableContentOpen
+}) {
+  const renderButton = data.website && (
+    <Button bsStyle="primary" href={data.website} target="_blank">
+      Visit website
+    </Button>
+  );
+  const renderCaret = isTogglableContentOpen ? (
+    <span className="glyphicon glyphicon-menu-up" />
+  ) : (
+    <span className="glyphicon glyphicon-menu-down" />
+  );
+  const togglableContent = data.rightContent2 && (
+    <div className="App-maincontent__col__collapsible-area">
+      <Button bsStyle="link" onClick={handleToggleContentClick}>
+        {renderCaret} Show more
+      </Button>
+      <Collapse in={isTogglableContentOpen} unmountOnExit={false}>
+        <p>{data.rightContent2}</p>
+      </Collapse>
+    </div>
+  );
   const jumbotron = (
     <Jumbotron>
-      <h2>Hello, world!</h2>
-      <p>
-        This is a simple hero unit, a simple jumbotron-style component for
-        calling extra attention to featured content or information.
-      </p>
-      <p>
-        <Button bsStyle="primary">Visit website</Button>
-      </p>
+      <h2>{data.title}</h2>
+      <p>{data.rightContent}</p>
+      {togglableContent}
+      <br />
+      <p>{renderButton}</p>
     </Jumbotron>
   );
 
@@ -42,9 +67,15 @@ function Colleftside(props) {
   );
 }
 
-function Maincontent(props) {
+function Maincontent({
+  activeContent,
+  isActive,
+  handleToggleContentClick,
+  isTogglableContentOpen
+}) {
+  const componentClass = 'App-maincontent ' + activeContent.colorClass;
   const gridInstance = (
-    <div className="App-maincontent">
+    <div className={componentClass}>
       <Row className="show-grid">
         <Col md={6} className="App-maincontent__col App-maincontent__col-1">
           <figure>
@@ -52,8 +83,11 @@ function Maincontent(props) {
           </figure>
         </Col>
         <Col md={6} className="App-maincontent__col App-maincontent__col-2">
-          <h1>{props.activeContentId}</h1>
-          <Colrightside />
+          <Colrightside
+            data={activeContent}
+            handleToggleContentClick={handleToggleContentClick}
+            isTogglableContentOpen={isTogglableContentOpen}
+          />
         </Col>
       </Row>
       <Row className="show-grid">
@@ -73,13 +107,7 @@ function Maincontent(props) {
     <Grid>
       <Row className="show-grid">
         <Col md={12}>
-          <Fade
-            when={props.isVisible}
-            duration={1000}
-            distance="20px"
-            collapse
-            top
-          >
+          <Fade when={isActive} duration={1000} distance="20px" collapse top>
             {gridInstance}
           </Fade>
         </Col>
@@ -89,18 +117,23 @@ function Maincontent(props) {
 }
 
 function Card(props) {
-  const { id, title, description } = props.data;
+  const { title, description } = props.data;
+  const { bg, isActive } = props;
   const cardcontainer = (
     <React.Fragment>
-      <div className="card-body" onClick={() => props.handleOnClickCard(id)}>
+      <div
+        className="card-body"
+        onClick={() => props.handleOnClickCard(props.data)}
+      >
         <h1 className="card-title">{title}</h1>
         <p className="card-text">{description}</p>
       </div>
     </React.Fragment>
   );
 
-  let componentStyles = `card text-white ${props.bg} mb-3`;
-  const componentStylesDefault = componentStyles + ' grow';
+  let isActiveClass = isActive ? ' active' : '';
+  let componentStyles = `card text-white ${bg} mb-3${isActiveClass}`;
+  const componentStylesDefault = componentStyles + (isActive ? '' : ' grow');
 
   return (
     <React.Fragment>
@@ -118,13 +151,13 @@ function Cards(props) {
   return (
     <Grid className="App-cards">
       <Row className="show-grid">
-        {props.data.map(card => {
+        {props.data.map((card, index) => {
           return (
-            <Col md={4}>
+            <Col md={4} key={card.id}>
               <Card
-                key={card.id}
                 data={card}
                 bg={card.colorClass}
+                isActive={index === props.activeIndex}
                 handleOnClickCard={props.handleOnClick}
               />
             </Col>
@@ -142,22 +175,35 @@ class App extends Component {
     this.state = {
       content: [],
       isContentVisible: false,
-      activeContentId: 0
+      activeIndex: props.activeIndex || -1,
+      activeContent: {},
+      isTogglableContentOpen: false
     };
 
     this.handleOnClick = this.handleOnClick.bind(this);
+    this.handleToggleContentClick = this.handleToggleContentClick.bind(this);
   }
 
   componentDidMount() {
     this.setState({ content: this.props.data });
   }
 
-  handleOnClick(id) {
-    this.setState({ isContentVisible: true, activeContentId: id });
+  handleOnClick(data, index) {
+    this.setState({
+      isContentVisible: true,
+      activeContent: data,
+      activeIndex: index
+    });
+  }
+
+  handleToggleContentClick() {
+    this.setState({
+      isTogglableContentOpen: !this.state.isTogglableContentOpen
+    });
   }
 
   render() {
-    const { content, isContentVisible, activeContentId } = this.state;
+    const { content, isContentVisible, activeContent } = this.state;
     return (
       <div className="App">
         <header className="App-header">
@@ -170,10 +216,16 @@ class App extends Component {
             alt="profile-placeholder"
           />
         </header>
-        <Cards data={content} handleOnClick={this.handleOnClick} />
+        <Cards
+          data={content}
+          handleOnClick={this.handleOnClick}
+          activeIndex={this.state.activeIndex}
+        />
         <Maincontent
-          isVisible={isContentVisible}
-          activeContentId={activeContentId}
+          isActive={isContentVisible}
+          activeContent={activeContent}
+          isTogglableContentOpen={this.state.isTogglableContentOpen}
+          handleToggleContentClick={this.handleToggleContentClick}
         />
         <footer className="App-footer" />
       </div>

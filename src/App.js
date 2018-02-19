@@ -19,15 +19,47 @@ const Tablet = props => <Responsive {...props} minWidth={768} maxWidth={991} />;
 const Mobile = props => <Responsive {...props} maxWidth={767} />;
 const Default = props => <Responsive {...props} minWidth={768} />;
 
+function Tag({ label }) {
+  return (
+    <li>
+      <a>{label}</a>
+    </li>
+  );
+}
+
+function Tags({ labels }) {
+  return (
+    <ul className="tags">
+      {labels.map((label, index) => {
+        return <Tag key={index} label={label} />;
+      })};
+    </ul>
+  );
+}
+
 function Colrightside({
   data,
   handleToggleContentClick,
   isTogglableContentOpen
 }) {
   const renderButton = data.website && (
-    <Button bsStyle="primary" href={data.website} target="_blank">
-      Visit website
-    </Button>
+    <td>
+      <Button bsStyle="primary" href={data.website.url} target="_blank">
+        {data.website.label}
+      </Button>
+    </td>
+  );
+  const renderButton2 = data.website2 && (
+    <td>
+      <Button
+        bsStyle="primary"
+        href={data.website2.url}
+        target="_blank"
+        className="ml-10"
+      >
+        {data.website2.label}
+      </Button>
+    </td>
   );
   const renderCaret = isTogglableContentOpen ? (
     <span className="glyphicon glyphicon-menu-up" />
@@ -50,19 +82,26 @@ function Colrightside({
       <p>{data.rightContent}</p>
       {togglableContent}
       <br />
-      <p>{renderButton}</p>
+      <table>
+        <tbody>
+          <tr>
+            {renderButton}
+            {renderButton2}
+          </tr>
+        </tbody>
+      </table>
     </Jumbotron>
   );
 
   return <React.Fragment>{jumbotron}</React.Fragment>;
 }
 
-function Colleftside(props) {
+function Colleftside({ data }) {
   return (
     <div>
-      <p>Markup that will be revealed on scroll </p>
-      <br />
-      <p>Markup that will be revealed on scroll</p>
+      <Tags
+        labels={['Programming', 'Reactjs', 'Css', 'Javascript', 'Es6', 'Html5']}
+      />
     </div>
   );
 }
@@ -92,7 +131,7 @@ function Maincontent({
       </Row>
       <Row className="show-grid">
         <Col md={6} className="App-maincontent__col App-maincontent__col-3">
-          <Colleftside />
+          <Colleftside data={activeContent.tags} />
         </Col>
         <Col md={6} className="App-maincontent__col App-maincontent__col-4">
           <figure>
@@ -180,7 +219,7 @@ class App extends Component {
       isTogglableContentOpen: false
     };
 
-    this.handleOnClick = this.handleOnClick.bind(this);
+    this.handleOnCardClick = this.handleOnCardClick.bind(this);
     this.handleToggleContentClick = this.handleToggleContentClick.bind(this);
   }
 
@@ -188,7 +227,7 @@ class App extends Component {
     this.setState({ content: this.props.data });
   }
 
-  handleOnClick(data, index) {
+  handleOnCardClick(data, index) {
     this.setState({
       isContentVisible: true,
       activeContent: data,
@@ -197,9 +236,9 @@ class App extends Component {
   }
 
   handleToggleContentClick() {
-    this.setState({
-      isTogglableContentOpen: !this.state.isTogglableContentOpen
-    });
+    this.setState(prevState => ({
+      isTogglableContentOpen: !prevState.isTogglableContentOpen
+    }));
   }
 
   render() {
@@ -218,7 +257,7 @@ class App extends Component {
         </header>
         <Cards
           data={content}
-          handleOnClick={this.handleOnClick}
+          handleOnClick={this.handleOnCardClick}
           activeIndex={this.state.activeIndex}
         />
         <Maincontent

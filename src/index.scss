@@ -1,3 +1,4 @@
+@import "styles/_vendor-prefixes.scss";
 @import "styles/_colors.scss";
 
 body {
@@ -10,4 +11,32 @@ body {
 img {
   width: 100%;
   height: auto;
+}
+
+.btn {
+  font-size: 1.5rem;
+  &-primary {
+    &:not(.disabled) {
+      &:active {
+        background-color: $color-black !important;
+        border-color: $color-black !important;
+      }
+      &:not(.disabled) {
+        &:active {
+          &:focus {
+            @include box-shadow(none);
+          }
+        }
+      }
+    }
+    &:active {
+      @include box-shadow(none);
+      &:focus {
+        @include box-shadow(none);
+      }
+    }
+    &:focus {
+      @include box-shadow(none);
+    }
+  }
 }

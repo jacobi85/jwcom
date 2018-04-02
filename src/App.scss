@@ -35,15 +35,10 @@
     .card {
       @include border-radius(2px);
       min-height: 200px;
+      text-decoration: none;
 
       &.primary {
         background-color: $color-blue;
-
-        &.active {
-          background-color: $color-lightblue;
-          border: 2px solid $color-white;
-          @include transition(background-color 500ms linear);
-        }
       }
 
       &.secondary {
@@ -52,6 +47,19 @@
 
       &.tertiary {
         background-color: $color-green;
+      }
+
+      &.quaternary {
+        background-color: $color-orange;
+      }
+
+      &.active {
+        background-color: $color-white;
+
+        .card-body {
+          color: $color-darkgray;
+          cursor: default;
+        }
       }
 
       &-body {
@@ -95,6 +103,16 @@
       }
     }
 
+    &.quaternary {
+      h2 {
+        color: $color-orange;
+      }
+      .btn.btn-primary {
+        background-color: $color-orange;
+        border: none;
+      }
+    }
+
     &__col {
       &__collapsible-area {
         text-align: center;
@@ -114,23 +132,32 @@
       }
 
       &-1 {
+
+        div.tags-container {
+          padding-top: 1em;
+        }
+
         @include at-least-width($scu-tablet-min-width) {
           > figure {
-            position: relative;
-            height: 250px;
+            position: absolute;
+            z-index: 1;
+            width: 105%;
             img {
-              position: absolute;
-              z-index: 1;
-              width: 115%;
               @include border-radius(2px);
               @include box-shadow(0 0 10px 0 $color-black);
+            }
+
+            div.tags-container {
+              width: 80%;
             }
           }
         }
       }
 
       &-2 {
+        margin: $spacing-margin-default 0;
         @include at-least-width($scu-tablet-min-width) {
+          margin: 0;
           padding-top: $spacing-margin-default;
         }
       }
@@ -167,6 +194,7 @@
 
     h2 {
       font-weight: bold;
+      font-size: 3rem;
     }
 
     table {
@@ -200,7 +228,10 @@
     height: 24px;
     line-height: 24px;
     position: relative;
-    font-size: 11px;
+    font-size: 1.3rem;
+    color: $color-white;
+    margin-bottom: 1em; 
+    margin-right: .2em;
   }
 
   a {
@@ -216,6 +247,38 @@
     -moz-border-radius-topright: 4px;
     -webkit-border-top-right-radius: 4px;
     border-top-right-radius: 4px;
+
+    .primary & {
+      background: $color-lightblue;
+
+      &:before {
+        border-color: transparent $color-lightblue transparent transparent;
+       }
+    }
+
+    .secondary & {
+      background: $color-magenta;
+
+      &:before {
+        border-color: transparent $color-magenta transparent transparent;
+       }
+    }
+
+    .tertiary & {
+      background: $color-lightgreen;
+
+      &:before {
+        border-color: transparent $color-lightgreen transparent transparent;
+       }
+    }
+
+    .quaternary & {
+      background: $color-lightorange;
+
+      &:before {
+        border-color: transparent $color-lightorange transparent transparent;
+       }
+    }
 
     &:before {
       content: "";
@@ -245,14 +308,6 @@
       -moz-box-shadow: -1px -1px 2px #004977;
       -webkit-box-shadow: -1px -1px 2px #004977;
       box-shadow: -1px -1px 2px #004977;
-    }
-
-    &:hover {
-      background: #222;
-
-      &:before {
-        border-color: transparent #555 transparent transparent;
-      }
     }
   }
 }

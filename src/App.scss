@@ -32,6 +32,17 @@
   &-cards {
     margin-bottom: $spacing-margin-default;
 
+    &-contact {
+      color:$color-white;
+      font-size: 2rem;
+
+      label {
+        width: 300px;
+        top: -1px;
+        left: -5px;
+        position: relative;}
+    }
+
     .card {
       @include border-radius(2px);
       min-height: 200px;
@@ -110,6 +121,15 @@
       .btn.btn-primary {
         background-color: $color-orange;
         border: none;
+      }
+    }
+
+    &__row {
+      &-2 {
+        margin-top: -3em;
+        @include at-least-width($scu-tablet-min-width) {
+          margin-top:0;
+        }
       }
     }
 

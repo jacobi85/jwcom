@@ -5,11 +5,11 @@
     "colorClass": "primary",
     "isActive": false,
     "description":
-      "As part of the swedish national team I compete in Stand up paddle racing across the globe. I offer private sessions for people who want to learn or take the next step.",
+      "As part of the swedish national team I compete in Stand up paddle racing across the globe. I offer private sessions occasionally in Stockholm for people who really want to take their paddling to the next level.",
     "rightContent":
       "Stand up paddling (SUP) is the ultimate workout that combines cardio, strength, power and balance and requires a paddle and a paddleboard. Jacob grew up close to the sea and surrounded by nature and has developed a special connection to water. The ocean is an escape, a place to re-energize, a playground for extreme activities such as wave-surfing and paddleboarding. Jacob has competed in world-class events across the globe numerous times as part of the swedish national team.",
     "website": {
-      "url": "http://www.positivelyjacob.com",
+      "url": "https://www.instagram.com/_jacobwestman/",
       "label": "Visit Instagram"
     },
     "images": ["sup/sup-racing-sweden-tn.jpg", "sup/sup-racing-peniche.jpg"],
@@ -37,7 +37,7 @@
     "description":
       "As a frontend developer, freelancer and contractor specialized in Reactjs I build web applications for buisness owners. I also run a blog to help other developers grow.",
     "rightContent":
-      "Jacob help business owners realise ideas and build web apps using modern web technologies (such as reactjs, javascript, html5 and css3.) Jacob has been passionate about the web for 2 decades and has worked professionally across the globe for over 10 years. Some of his top clients up to date are Dassualt Systemes, Bristol myers squibb, NYX Interactive, and Scandic. One of Jacob’s goals for 2018 is to dig deeper into the fullstack path as well as helping young entrepreneurs and frontend developers in the community.",
+      "Jacob help business owners realise ideas and build web apps using modern web technologies (such as reactjs, javascript, html5 and css3.) Jacob has been passionate about the web for 2 decades and has worked professionally across the globe for over 10 years. Some of his top clients up to date are Dassault Systemes, Hiq, Bristol myers squibb, NYX Interactive, and Scandic. One of Jacob’s goals for 2018 is to dig deeper into the fullstack path as well as helping young entrepreneurs and frontend developers in the community.",
     "rightContent2":
       "Jacob is specialised in Reactjs but has worked with other frameworks such as angular, dojo, nodejs throughout his career. Jacob has also worked with user experience design and has a bachelor degree in informatics from Linnaeus University.",
     "website": { "url": "http://www.westmanpro.com", "label": "Visit blog" },
@@ -71,9 +71,17 @@
     "colorClass": "tertiary",
     "isActive": false,
     "description":
-      "As a blockchain maximalist I believe in crypto and the future of digital money. I collaborate with one of the largest corporations in the field of industrial cryptocurrency mining in the world.",
+      "As a blockchain maximalist I believe in crypto and the future of digital money. I collaborate with one of the largest corporations in the field of industrial cryptocurrency mining in the world. I also run Blockchain maximalist to spread the word about the blockchain.",
     "rightContent":
-      "What if we could transfer power anywhere in the world to people in need? Imagine you being a part of making that come true? \nJacob combines crypto and business in order to make life richer for others. Leveraging a new economic model we build successful teams of crypto enthusiasts and have helped many people to live a richer and more fullfilling life.",
+      "The blockchain - a decentralised ledger that will disrupt every industry that we know about. What if we could transfer power anywhere in the world to people in need? What if we could own our own data and identity on the internet and live in a world we know is safe and secure. Imagine you being part of making that come true? \nJacob combines crypto and business in order to make life richer for others. Jacob is passionate about spreading the word about the blockchain and have created blockchain maximalist to leverage this vision. Together with other entrepreneurs Jacob also help building successful teams of crypto enthusiasts and have helped many people to live a richer and more fullfilling life.",
+    "website": {
+      "url": "https://twitter.com/blockchainmaxim",
+      "label": "Visit Twitter"
+    },
+    "website2": {
+      "url": "https://www.instagram.com/blockchainmaximalist/",
+      "label": "Visit Instagram"
+    },
     "images": [
       "blockchain/mining-equipment.jpg",
       "entrepreneur/people-coffee-tea-meeting.jpg"
@@ -100,11 +108,15 @@
     "colorClass": "quaternary",
     "isActive": false,
     "description":
-      "As a life motivator and success coach - I help people - entrepreneurs - athletes to find the mindset and inner drive to walk that extra mile and achieve greatness in life.",
+      "As a life motivator - I help people - entrepreneurs - athletes to find the mindset and inner drive to walk that extra mile and achieve greatness in life. I run Positivelyjacob to encourage people to fullfill their dreams.",
     "rightContent":
-      "Are you struggling in life? Are you finding yourself in a hamster-wheel trying to get out - but always falling back into old-patterns? Perhaps your dreams are fullfilled and you are ready to take your buisiness to the next level. Whatever stage you are at, life is full of challenges and epic experiences just waiting for you. It is your birth right to grow, have fun along the way and claim the rewards. The more you are willing to give to others the more successful you will become.",
+      "Are you struggling in life? Are you finding yourself in a hamster-wheel trying to get out - but always falling back into old patterns? Perhaps your dreams are fullfilled and you are ready to take your buisiness to the next level. Whatever stage you are at, life is full of challenges and epic experiences just waiting for you to encounter. It is your birth right to grow, have fun along the way and claim the rewards. The more you are willing to give to others the more successful you will become.",
     "rightContent2": "",
     "website": {
+      "url": "https://www.facebook.com/positivelyjacob/",
+      "label": "Visit website"
+    },
+    "website2": {
       "url": "http://www.positivelyjacob.com",
       "label": "Visit Instagram"
     },

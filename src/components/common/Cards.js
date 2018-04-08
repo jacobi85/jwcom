@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Grid, Row, Col } from 'react-bootstrap';
 import Responsive from 'react-responsive';
+import img_contact from '../../assets/common/jbw_contact.jpg';
 
 /** TODO: Move this to responsive.js */
 const Mobile = props => <Responsive {...props} maxWidth={767} />;
@@ -57,6 +58,18 @@ function Cards(props) {
             </Col>
           );
         })}
+        <Col md={4}>
+          <div className="App-cards-contact">
+            <p>
+              Get in touch:{' '}
+              <label>
+                <a href="mailto:contact@jacobwestman.com">
+                  <img src={img_contact} alt="Contact Jacob Westman" />
+                </a>
+              </label>
+            </p>
+          </div>
+        </Col>
       </Row>
     </Grid>
   );

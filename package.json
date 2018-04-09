@@ -1,7 +1,7 @@
 {
   "name": "jwcom",
   "version": "0.1.0",
-  "homepage": "http://jwcomweb.surge.sh",
+  "homepage": "https://jwcom.herokuapp.com/",
   "private": true,
   "dependencies": {
     "autoprefixer": "7.1.6",

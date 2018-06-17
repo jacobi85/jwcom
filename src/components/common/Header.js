@@ -1,5 +1,5 @@
 import React from 'react';
-import profileImg from '../../assets/common/placeholder-profile.jpg';
+import profileImg from '../../assets/common/jacobwestman_header.jpg';
 import logo from '../../assets/common/jacobwestman_logo@x2.gif';
 
 function Header() {
@@ -11,7 +11,7 @@ function Header() {
       <img
         className="App-header__profile-img"
         src={profileImg}
-        alt="profile-placeholder"
+        alt="jacobwestman_profile_header"
       />
     </header>
   );

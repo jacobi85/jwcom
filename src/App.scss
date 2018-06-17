@@ -6,12 +6,16 @@
   &-header {
     height: 361px;
     margin-bottom: $spacing-margin-default;
-    background-color: $color-white;
+    background-color: $color-sandwhite;
     text-align: center;
     position: relative;
 
     > img {
-      max-width: 187px;
+      max-width: 182px;
+
+      @include at-least-width($scu-tablet-min-width) {
+        max-width: 210px;
+        }
     }
 
     &__profile-img {

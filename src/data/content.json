@@ -5,12 +5,16 @@
     "colorClass": "primary",
     "isActive": false,
     "description":
-      "As part of the swedish national team I compete in Stand up paddle racing across the globe. I offer private sessions occasionally in Stockholm for people who really want to take their paddling to the next level.",
+      "As part of the swedish national team I compete in Stand up paddle racing across the globe. I am a partner and team rider for Crosswater - one of the key players in developing and spreading the sport in Sweden.",
     "rightContent":
-      "Stand up paddling (SUP) is the ultimate workout that combines cardio, strength, power and balance and requires a paddle and a paddleboard. Jacob grew up close to the sea and surrounded by nature and has developed a special connection to water. The ocean is an escape, a place to re-energize, a playground for extreme activities such as wave-surfing and paddleboarding. Jacob has competed in world-class events across the globe numerous times as part of the swedish national team.",
+      "Stand up paddling (SUP) is the ultimate workout that combines cardio, strength, power and balance and requires a paddle and a paddleboard. Jacob grew up close to the sea and surrounded by nature and has developed a special connection to water. The ocean is an escape, a place to re-energize, a playground for extreme activities such as wave-surfing and paddleboarding. Jacob has competed in world-class events across the globe numerous times as part of the swedish national team. Jacob is currently ranked number 4 in Sweden.",
     "website": {
       "url": "https://www.instagram.com/_jacobwestman/",
       "label": "Visit Instagram"
+    },
+    "website2": {
+      "url": "http://crosswater.se/",
+      "label": "Visit website"
     },
     "images": ["sup/sup-racing-sweden-tn.jpg", "sup/sup-racing-peniche.jpg"],
     "tags": [
@@ -67,11 +71,11 @@
   },
   {
     "id": "blockchain",
-    "title": "Blockchain maximalist",
+    "title": "Blockchain entrepreneur",
     "colorClass": "tertiary",
     "isActive": false,
     "description":
-      "As a blockchain maximalist I believe in crypto and the future of digital money. I collaborate with one of the largest corporations in the field of industrial cryptocurrency mining in the world. I also run Blockchain maximalist to spread the word about the blockchain.",
+      "As a blockchain entrepreneur I believe in crypto and the future of digital money. I collaborate with one of the largest corporations in the field of industrial cryptocurrency mining in the world.",
     "rightContent":
       "The blockchain - a decentralised ledger that will disrupt every industry that we know about. What if we could transfer power anywhere in the world to people in need? What if we could own our own data and identity on the internet and live in a world we know is safe and secure. Imagine you being part of making that come true? \nJacob combines crypto and business in order to make life richer for others. Jacob is passionate about spreading the word about the blockchain and have created blockchain maximalist to leverage this vision. Together with other entrepreneurs Jacob also help building successful teams of crypto enthusiasts and have helped many people to live a richer and more fullfilling life.",
     "website": {

@@ -1,6 +1,6 @@
 import React from 'react';
 import profileImg from '../../assets/common/jacobwestman_header.jpg';
-import logo from '../../assets/common/jacobwestman_logo@x2.gif';
+import logo from '../../assets/common/jacobwestman_logo@x2.png';
 
 function Header() {
   return (

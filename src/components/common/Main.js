@@ -14,7 +14,7 @@ function Maincontent({
   const Img1Url = require(`../../assets/sceens/${activeContent.images[0]}`);
   const Img2Url = require(`../../assets/sceens/${activeContent.images[1]}`);
   const gridInstance = (
-    <div className={componentClass}>
+    <div className={componentClass} id="view">
       <Row className="show-grid App-maincontent__row-1">
         <Col md={6} className="App-maincontent__col App-maincontent__col-1">
           <figure>

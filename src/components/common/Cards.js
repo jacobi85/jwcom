@@ -27,7 +27,7 @@ function Card(props) {
     <React.Fragment>
       <Mobile>
         <Link
-          to={'/' + id}
+          to={'/' + id + '#view'}
           activeClassName="active"
           className={componentStyles}
         >
@@ -36,7 +36,7 @@ function Card(props) {
       </Mobile>
       <Default>
         <Link
-          to={'/' + id}
+          to={'/' + id + '#view'}
           activeClassName="active"
           className={componentStylesDefault}
         >
